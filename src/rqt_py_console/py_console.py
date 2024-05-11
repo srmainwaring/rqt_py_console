@@ -63,7 +63,8 @@ class PyConsole(Plugin):
         self._context.add_widget(self._widget)
 
     def _switch_console_widget(self):
-        self._widget.layout().removeWidget(self._console_widget)
+        if self._console_widget is not None:
+            self._widget.layout().removeWidget(self._console_widget)
         self.shutdown_console_widget()
 
         if _has_spyderlib and self._use_spyderlib:
